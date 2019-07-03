@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="container">
+  <swiper class=''>
+    <swiper-item>
+      <image ></image>
+    </swiper-item>
+  </swiper>
+</view>
