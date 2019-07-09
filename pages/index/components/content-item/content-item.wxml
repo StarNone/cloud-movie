@@ -1,0 +1,16 @@
+<!--pages/index/components/content-item.wxml-->
+<view class="content-item">
+  <view class="content-msg">
+    <image src="{{authorAvatar}}" class="author-avatar"></image>
+    <text class="time">{{time}}</text>
+  </view>
+  <view class="title">
+    <text>{{title}}</text>
+  </view>
+  <view class="main-img">
+    <image class="img" src="{{img}}"></image>
+  </view>
+  <view class="content-pre">
+    <text>{{content}}</text>
+  </view>
+</view>

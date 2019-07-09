@@ -1,8 +1,19 @@
 <!--index.wxml-->
 <view class="container">
-  <swiper class=''>
-    <swiper-item>
-      <image ></image>
+  <swiper class='swiper' indicator-dots='{{true}}' indicator-active-color='#409eff'>
+    <swiper-item class='swiper-item' wx:for="{{swiper}}" wx:key="{{index}}">
+      <view class="swiper-item-wrap">
+        <image class='swiper-img' src='{{item.img}}'></image>
+        <text class="swiper-title">{{item.title}}</text>
+      </view>
     </swiper-item>
   </swiper>
+  <navigator wx:for="{{news}}" wx:key="{{index}}" url="/pages/articlesDetail/articlesDetail?id={{item._id}}" class="content">
+    <content-item
+      author-avatar="{{item.authorAvatar}}"
+      img="{{item.img}}"
+      title="{{item.title}}"
+      time="{{item.timeStr}}"
+      content="{{item.contentPre}}"></content-item>
+  </navigator>
 </view>

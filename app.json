@@ -1,12 +1,40 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/articlesDetail/articlesDetail",
+    "pages/movie/movie",
+    "pages/movieDetail/movieDetail",
+    "pages/person/person"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#405f80",
     "navigationBarTitleText": "云电影",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "text": "文章",
+        "iconPath": "assets/tab-icon/article1.png",
+        "selectedIconPath": "assets/tab-icon/article2.png",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "text": "电影",
+        "iconPath": "assets/tab-icon/film1.png",
+        "selectedIconPath": "assets/tab-icon/film2.png",
+        "pagePath": "pages/movie/movie"
+      },
+      {
+        "text": "个人中心",
+        "iconPath": "assets/tab-icon/person1.png",
+        "selectedIconPath": "assets/tab-icon/person2.png",
+        "pagePath": "pages/person/person"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }
