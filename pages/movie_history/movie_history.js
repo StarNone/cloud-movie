@@ -11,7 +11,9 @@ Page({
     url: '',
     activeindex: 0,
     guess: [],
-    currentTime: 0
+    currentTime: 0,
+    continueTime: 0,
+    isFirst: true
   },
 
   /**
@@ -47,6 +49,13 @@ Page({
   },
   getCurrentTime (e) {
     const {currentTime} = e.detail
+    if (this.data.isFirst) {
+      const videoCtx = wx.createVideoContext('video')
+      videoCtx.seek(Number(this.data.continueTime))
+      this.setData({
+        isFirst: false
+      })
+    }
     this.setData({
       currentTime
     })
@@ -61,10 +70,22 @@ Page({
   jump () {
     this.uploadPlayStatus()
   },
+  getHistory (id) {
+    axios.get(`/movie_history/${id}`).then(res => {
+      this.setData({
+        movie: res.data.movie,
+        url: res.data.movie.links[Number(res.data.index)],
+        activeindex: res.data.index,
+        continueTime: res.data.continueTime
+      })
+      const videoCtx = wx.createVideoContext('video')
+      videoCtx.play()
+      this.getGuess(res.data.movie._id)
+    })
+  },
   onLoad: function (options) {
     const {id} = options
-    this.getMovie(id)
-    this.getGuess(id)
+    this.getHistory(id)
   },
 
   /**

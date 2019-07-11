@@ -4,7 +4,9 @@
     "pages/articlesDetail/articlesDetail",
     "pages/movie/movie",
     "pages/movieDetail/movieDetail",
-    "pages/person/person"
+    "pages/person/person",
+    "pages/history/history",
+    "pages/movie_history/movie_history"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -29,10 +31,10 @@
         "pagePath": "pages/movie/movie"
       },
       {
-        "text": "个人中心",
-        "iconPath": "assets/tab-icon/person1.png",
-        "selectedIconPath": "assets/tab-icon/person2.png",
-        "pagePath": "pages/person/person"
+        "text": "观影记录",
+        "iconPath": "assets/tab-icon/history1.png",
+        "selectedIconPath": "assets/tab-icon/history2.png",
+        "pagePath": "pages/history/history"
       }
     ]
   },

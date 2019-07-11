@@ -4,12 +4,17 @@ class Axios {
   }
   sendMsg (url, data, method) {
     const _this = this
+    const header = {}
+    const token = wx.getStorageSync('token')
+    if (token) {
+      header.token = token
+    }
     return new Promise ((resolve, reject) => {
       wx.request({
         url: _this.baseURL + url,
         data,
         method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        // header: {}, // 设置请求的 header
+        header, // 设置请求的 header
         success: function(res){
           // success
           resolve(res.data)

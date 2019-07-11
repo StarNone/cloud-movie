@@ -1,42 +1,46 @@
-// pages/movie/movie.js
+// pages/history/history.js
 const axios = require('../../utils/axios')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    swiper: [],
-    movie: [],
-    pn: 1,
-    size: 12
+    history: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  getMovies () {
-    axios.get('/movies', {
-      pn: this.data.pn,
-      size: this.data.size
-    }).then(res => {
+  getHistory () {
+    axios.get('/movie_history').then(res => {
       // console.log(res)
       this.setData({
-        movie: [...this.data.movie,...res.data]
+        history: res.data.map(item => {
+          if (item.movie) {
+            var str = ''
+            item.percent = Number(item.continueTime) * 100 / (Number(item.movie.mins) * 60)
+            if (item.continueTime < 60) {
+              str = '观看不足一分钟'
+            } else {
+              str = `已观看${Math.round(item.continueTime / 60)}分钟`
+            }
+            item.str = str
+            return item
+          }
+        })
       })
     })
   },
-  getSwiper () {
-    axios.get('/swiper').then(res => {
-      // console.log(res)
-      this.setData({
-        swiper: res.data
-      })
+  jump (e) {
+    const {id} = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `/pages/movie_history/movie_history?id=${id}`
     })
   },
   onLoad: function (options) {
-    this.getSwiper()
-    this.getMovies()
+    this.getHistory()
   },
 
   /**
@@ -71,24 +75,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
-    this.setData({
-      swiper: [],
-      movie: [],
-      pn: 1
-    })
-    this.getSwiper()
-    this.getMovies()
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      pn: this.data.pn + 1
-    })
-    this.getMovies()
+
   },
 
   /**

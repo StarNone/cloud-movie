@@ -1,4 +1,4 @@
-<!--pages/movieDetail/movieDetail.wxml-->
+<!--pages/movie_history/movie_history.wxml-->
 <view class="movie-details">
   <video
     class="video"
