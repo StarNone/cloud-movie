@@ -29,6 +29,7 @@
 }
 
 .history .item .item-right .top .progress {
+  margin-top: 10px;
   width: 100%;
 }
 

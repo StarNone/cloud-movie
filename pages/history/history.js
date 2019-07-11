@@ -17,7 +17,7 @@ Page({
     axios.get('/movie_history').then(res => {
       // console.log(res)
       this.setData({
-        history: res.data.map(item => {
+        history: res.data.filter(item => {
           if (item.movie) {
             var str = ''
             item.percent = Number(item.continueTime) * 100 / (Number(item.movie.mins) * 60)

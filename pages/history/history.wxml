@@ -7,7 +7,7 @@
         <view class="title">
           {{item.movie.title}}
         </view>
-        <progress percent="{{item.percent}}"></progress>
+        <progress class="progress" percent="{{item.percent}}"></progress>
       </view>
       <view class="msg">
         {{item.str}}
